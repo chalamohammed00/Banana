@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Banana - Catch the Slip. Go Viral. The ultimate short-form video platform for creators.">
+    <meta name="theme-color" content="#000000">
     <title>Banana - Catch the Slip. Go Viral.</title>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <style>
         * {
             margin: 0;
@@ -22,46 +28,42 @@
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             overflow-x: hidden;
+            font-feature-settings: "kern" 1;
         }
 
-        /* Glowing Text Effects */
+        /* Glowing Text Effects - Optimized */
         .glow-yellow {
             color: #FFE100;
             text-shadow: 0 0 20px rgba(255, 225, 0, 0.8), 0 0 40px rgba(255, 225, 0, 0.4);
+            will-change: auto;
         }
 
         .glow-cyan {
             color: #00F2FE;
             text-shadow: 0 0 20px rgba(0, 242, 254, 0.8), 0 0 40px rgba(0, 242, 254, 0.4);
-        }
-
-        /* Glowing Border */
-        .glow-border-yellow {
-            border: 2px solid #FFE100;
-            box-shadow: 0 0 20px rgba(255, 225, 0, 0.6), inset 0 0 20px rgba(255, 225, 0, 0.1);
-        }
-
-        .glow-border-cyan {
-            border: 2px solid #00F2FE;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.1);
+            will-change: auto;
         }
 
         /* Glassmorphism */
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .glass-dark {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 225, 0, 0.2);
         }
 
-        /* Hover Effects */
+        /* Optimized Hover Effects */
         .hover-zoom {
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .hover-zoom:hover {
@@ -69,7 +71,9 @@
         }
 
         .hover-lift {
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .hover-lift:hover {
@@ -77,13 +81,16 @@
             box-shadow: 0 20px 40px rgba(255, 225, 0, 0.2);
         }
 
-        /* Button Glow */
+        /* Button Glow - Optimized */
         .btn-glow-yellow {
             background: linear-gradient(135deg, #FFE100 0%, #FFC700 100%);
             color: #000000;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             box-shadow: 0 0 30px rgba(255, 225, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            font-size: inherit;
         }
 
         .btn-glow-yellow:hover {
@@ -95,8 +102,11 @@
             background: linear-gradient(135deg, #00F2FE 0%, #00D4FF 100%);
             color: #000000;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+            border: none;
+            cursor: pointer;
+            font-size: inherit;
         }
 
         .btn-glow-cyan:hover {
@@ -109,7 +119,7 @@
             background: linear-gradient(135deg, rgba(255, 225, 0, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
         }
 
-        /* Animated Background */
+        /* Optimized Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -117,9 +127,10 @@
 
         .float-animation {
             animation: float 6s ease-in-out infinite;
+            will-change: transform;
         }
 
-        /* Video Feed Mockup */
+        /* Phone Mockup */
         .phone-mockup {
             position: relative;
             width: 280px;
@@ -129,6 +140,7 @@
             padding: 12px;
             box-shadow: 0 20px 60px rgba(255, 225, 0, 0.3), 0 0 40px rgba(0, 242, 254, 0.2);
             border: 2px solid rgba(255, 225, 0, 0.3);
+            contain: layout style paint;
         }
 
         .phone-mockup::before {
@@ -154,6 +166,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            contain: layout style paint;
         }
 
         .phone-screen::after {
@@ -162,17 +175,7 @@
             opacity: 0.8;
         }
 
-        /* Pulse Animation */
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 30px rgba(255, 225, 0, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(255, 225, 0, 0.8); }
-        }
-
-        .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        /* Particle Effect */
+        /* Particle Effect - Optimized */
         .particles {
             position: fixed;
             top: 0;
@@ -181,6 +184,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            contain: strict;
         }
 
         .particle {
@@ -191,6 +195,7 @@
             border-radius: 50%;
             opacity: 0.3;
             animation: float-particles 20s linear infinite;
+            will-change: transform;
         }
 
         @keyframes float-particles {
@@ -199,7 +204,52 @@
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
 
-        /* Responsive */
+        /* Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 225, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            contain: layout style paint;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 80px 20px;
+            contain: layout style;
+        }
+
+        /* Lazy Loading Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive - Mobile First */
+        @media (max-width: 640px) {
+            section {
+                padding: 60px 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+
+            /* Reduce particle count on mobile */
+            .particle:nth-child(n+15) {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -211,41 +261,38 @@
             }
         }
 
-        /* Navbar */
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 225, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
-        /* Section Spacing */
-        section {
-            padding: 80px 20px;
-        }
-
-        @media (max-width: 640px) {
-            section {
-                padding: 60px 20px;
+        /* Dark mode optimizations */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
             }
         }
     </style>
 </head>
 <body>
     <!-- Particle Background -->
-    <div class="particles" id="particles"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
 
     <!-- Navigation Bar -->
-    <nav class="w-full">
+    <nav class="w-full" role="navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <span class="text-3xl">🍌</span>
+                <a href="#home" class="flex items-center space-x-2">
+                    <span class="text-3xl" aria-label="Banana logo">🍌</span>
                     <span class="text-2xl font-bold glow-yellow">BANANA</span>
-                </div>
+                </a>
 
                 <!-- Desktop Links -->
                 <div class="hidden md:flex items-center space-x-8">
@@ -255,20 +302,20 @@
                 </div>
 
                 <!-- Download Button -->
-                <button class="btn-glow-yellow px-6 py-2 rounded-full font-bold hidden md:block">
-                    <i class="fas fa-download mr-2"></i>Download
+                <button class="btn-glow-yellow px-6 py-2 rounded-full font-bold hidden md:block" aria-label="Download Banana app">
+                    <i class="fas fa-download mr-2" aria-hidden="true"></i>Download
                 </button>
 
                 <!-- Mobile Menu -->
-                <button class="md:hidden text-yellow-400" id="mobile-menu">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button class="md:hidden text-yellow-400" id="mobile-menu" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg relative overflow-hidden">
+    <section id="home" class="gradient-bg relative overflow-hidden" role="region" aria-label="Hero section">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
@@ -285,11 +332,11 @@
 
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="btn-glow-yellow px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center hover-zoom">
-                            <i class="fab fa-google-play mr-3"></i>Google Play
+                        <button class="btn-glow-yellow px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center hover-zoom" aria-label="Download from Google Play">
+                            <i class="fab fa-google-play mr-3" aria-hidden="true"></i>Google Play
                         </button>
-                        <button class="btn-glow-cyan px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center hover-zoom">
-                            <i class="fab fa-apple mr-3"></i>App Store
+                        <button class="btn-glow-cyan px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center hover-zoom" aria-label="Download from App Store">
+                            <i class="fab fa-apple mr-3" aria-hidden="true"></i>App Store
                         </button>
                     </div>
 
@@ -312,14 +359,14 @@
 
                 <!-- Right Content - Phone Mockup -->
                 <div class="flex justify-center">
-                    <div class="phone-mockup float-animation"></div>
+                    <div class="phone-mockup float-animation" aria-label="Phone mockup showing Banana app interface"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="relative">
+    <section id="features" class="relative" role="region" aria-label="Features section">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-5xl font-black mb-4">
@@ -330,58 +377,50 @@
 
             <!-- Features Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Feature 1 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">📹</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">📹</div>
                     <h3 class="text-2xl font-bold glow-yellow mb-3">Vertical Video Feed</h3>
                     <p class="text-gray-300">Create stunning short-form videos with professional tools and effects.</p>
                 </div>
 
-                <!-- Feature 2 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">💬</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">💬</div>
                     <h3 class="text-2xl font-bold glow-cyan mb-3">Real-time Chat</h3>
                     <p class="text-gray-300">Connect instantly with your followers through live messaging and community.</p>
                 </div>
 
-                <!-- Feature 3 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">🎥</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">🎥</div>
                     <h3 class="text-2xl font-bold glow-yellow mb-3">HD Video Calls</h3>
                     <p class="text-gray-300">Crystal-clear WebRTC video calls with your favorite creators.</p>
                 </div>
 
-                <!-- Feature 4 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">🎵</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">🎵</div>
                     <h3 class="text-2xl font-bold glow-cyan mb-3">AI Music</h3>
                     <p class="text-gray-300">Access millions of songs and AI-generated beats for your videos.</p>
                 </div>
 
-                <!-- Feature 5 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">✨</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">✨</div>
                     <h3 class="text-2xl font-bold glow-yellow mb-3">AR Filters</h3>
                     <p class="text-gray-300">Express yourself with trendy AR effects and custom filters.</p>
                 </div>
 
-                <!-- Feature 6 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">🌍</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">🌍</div>
                     <h3 class="text-2xl font-bold glow-cyan mb-3">Global Discovery</h3>
                     <p class="text-gray-300">Discover trending content from creators worldwide instantly.</p>
                 </div>
 
-                <!-- Feature 7 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">🏆</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">🏆</div>
                     <h3 class="text-2xl font-bold glow-yellow mb-3">Creator Rewards</h3>
                     <p class="text-gray-300">Earn money from your viral videos through our reward program.</p>
                 </div>
 
-                <!-- Feature 8 -->
                 <div class="glass-dark p-8 rounded-2xl hover-lift hover-zoom">
-                    <div class="text-5xl mb-4">⚡</div>
+                    <div class="text-5xl mb-4" aria-hidden="true">⚡</div>
                     <h3 class="text-2xl font-bold glow-cyan mb-3">Lightning Fast</h3>
                     <p class="text-gray-300">Optimized for speed with sub-second upload and processing times.</p>
                 </div>
@@ -390,7 +429,7 @@
     </section>
 
     <!-- Discover Section -->
-    <section id="discover" class="gradient-bg relative">
+    <section id="discover" class="gradient-bg relative" role="region" aria-label="Discover section">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Left - Content -->
@@ -407,28 +446,28 @@
 
                     <div class="space-y-4">
                         <div class="flex items-start space-x-4">
-                            <div class="text-2xl glow-yellow">✓</div>
+                            <div class="text-2xl glow-yellow" aria-hidden="true">✓</div>
                             <p class="text-lg text-gray-300">AI-powered recommendations tailored to your interests</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="text-2xl glow-cyan">✓</div>
+                            <div class="text-2xl glow-cyan" aria-hidden="true">✓</div>
                             <p class="text-lg text-gray-300">Real-time trending hashtags and challenges</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="text-2xl glow-yellow">✓</div>
+                            <div class="text-2xl glow-yellow" aria-hidden="true">✓</div>
                             <p class="text-lg text-gray-300">Personalized For You page that learns your preferences</p>
                         </div>
                     </div>
 
-                    <button class="btn-glow-cyan px-8 py-4 rounded-full font-bold text-lg hover-zoom">
-                        Explore Now <i class="fas fa-arrow-right ml-2"></i>
+                    <button class="btn-glow-cyan px-8 py-4 rounded-full font-bold text-lg hover-zoom" aria-label="Explore trending content">
+                        Explore Now <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
                     </button>
                 </div>
 
                 <!-- Right - Content Cards -->
                 <div class="space-y-4">
                     <div class="glass-dark p-6 rounded-xl flex items-center space-x-4 hover-zoom cursor-pointer">
-                        <div class="text-4xl">🎬</div>
+                        <div class="text-4xl" aria-hidden="true">🎬</div>
                         <div>
                             <h4 class="text-lg font-bold glow-yellow">#DanceChallenge</h4>
                             <p class="text-sm text-gray-400">2.5M videos • Trending</p>
@@ -436,7 +475,7 @@
                     </div>
 
                     <div class="glass-dark p-6 rounded-xl flex items-center space-x-4 hover-zoom cursor-pointer">
-                        <div class="text-4xl">😂</div>
+                        <div class="text-4xl" aria-hidden="true">😂</div>
                         <div>
                             <h4 class="text-lg font-bold glow-cyan">#ComedySkits</h4>
                             <p class="text-sm text-gray-400">3.2M videos • Hot</p>
@@ -444,7 +483,7 @@
                     </div>
 
                     <div class="glass-dark p-6 rounded-xl flex items-center space-x-4 hover-zoom cursor-pointer">
-                        <div class="text-4xl">🍕</div>
+                        <div class="text-4xl" aria-hidden="true">🍕</div>
                         <div>
                             <h4 class="text-lg font-bold glow-yellow">#FoodieLife</h4>
                             <p class="text-sm text-gray-400">1.8M videos • Rising</p>
@@ -452,7 +491,7 @@
                     </div>
 
                     <div class="glass-dark p-6 rounded-xl flex items-center space-x-4 hover-zoom cursor-pointer">
-                        <div class="text-4xl">🏋️</div>
+                        <div class="text-4xl" aria-hidden="true">🏋️</div>
                         <div>
                             <h4 class="text-lg font-bold glow-cyan">#FitnessGoals</h4>
                             <p class="text-sm text-gray-400">2.1M videos • Viral</p>
@@ -464,7 +503,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="relative py-20">
+    <section class="relative py-20" role="region" aria-label="Call to action section">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl md:text-6xl font-black mb-8">
                 <span class="glow-yellow">Ready to Go Viral?</span>
@@ -475,31 +514,31 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="btn-glow-yellow px-10 py-5 rounded-full font-bold text-lg hover-zoom flex items-center justify-center">
-                    <i class="fab fa-google-play mr-3"></i>Get on Google Play
+                <button class="btn-glow-yellow px-10 py-5 rounded-full font-bold text-lg hover-zoom flex items-center justify-center" aria-label="Get Banana on Google Play">
+                    <i class="fab fa-google-play mr-3" aria-hidden="true"></i>Get on Google Play
                 </button>
-                <button class="btn-glow-cyan px-10 py-5 rounded-full font-bold text-lg hover-zoom flex items-center justify-center">
-                    <i class="fab fa-apple mr-3"></i>Download on App Store
+                <button class="btn-glow-cyan px-10 py-5 rounded-full font-bold text-lg hover-zoom flex items-center justify-center" aria-label="Download Banana on App Store">
+                    <i class="fab fa-apple mr-3" aria-hidden="true"></i>Download on App Store
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800 py-12 bg-black">
+    <footer class="border-t border-gray-800 py-12 bg-black" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
-                        <span class="text-3xl">🍌</span>
+                        <span class="text-3xl" aria-hidden="true">🍌</span>
                         <span class="text-2xl font-bold glow-yellow">BANANA</span>
                     </div>
                     <p class="text-gray-400">The platform for creators to shine and go viral.</p>
                 </div>
 
                 <!-- Company -->
-                <div>
+                <nav aria-label="Company links">
                     <h4 class="font-bold glow-yellow mb-4">Company</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition">About Us</a></li>
@@ -507,10 +546,10 @@
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
                         <li><a href="#" class="hover:text-white transition">Press</a></li>
                     </ul>
-                </div>
+                </nav>
 
                 <!-- Support -->
-                <div>
+                <nav aria-label="Support links">
                     <h4 class="font-bold glow-cyan mb-4">Support</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition">Help Center</a></li>
@@ -518,45 +557,59 @@
                         <li><a href="#" class="hover:text-white transition">Safety</a></li>
                         <li><a href="#" class="hover:text-white transition">Community</a></li>
                     </ul>
-                </div>
+                </nav>
 
                 <!-- Social -->
-                <div>
+                <nav aria-label="Social media links">
                     <h4 class="font-bold glow-yellow mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition text-2xl">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition text-2xl" aria-label="Follow on Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-2xl">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-2xl" aria-label="Follow on Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition text-2xl">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition text-2xl" aria-label="Subscribe on YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-2xl">
-                            <i class="fab fa-tiktok"></i>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-2xl" aria-label="Follow on TikTok">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i>
                         </a>
                     </div>
-                </div>
+                </nav>
             </div>
 
             <!-- Bottom Footer -->
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-500 text-sm">© 2024 Banana. All rights reserved.</p>
-                <div class="flex space-x-6 text-sm text-gray-500 mt-4 md:mt-0">
+                <nav class="flex space-x-6 text-sm text-gray-500 mt-4 md:mt-0" aria-label="Legal links">
                     <a href="#" class="hover:text-white transition">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition">Terms of Service</a>
                     <a href="#" class="hover:text-white transition">Cookie Policy</a>
-                </div>
+                </nav>
             </div>
         </div>
     </footer>
 
     <script>
-        // Generate Floating Particles
+        // Throttle function for better performance
+        function throttle(fn, delay) {
+            let lastCall = 0;
+            return function(...args) {
+                const now = Date.now();
+                if (now - lastCall >= delay) {
+                    lastCall = now;
+                    fn(...args);
+                }
+            };
+        }
+
+        // Generate Floating Particles - Optimized
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
+            const particleCount = window.innerWidth > 768 ? 30 : 15;
+            
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
@@ -567,25 +620,46 @@
             }
         }
 
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu?.addEventListener('click', function() {
-            alert('Mobile menu would go here');
-        });
-
         // Initialize
-        createParticles();
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-                }
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (href !== '#' && target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
             });
         });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+        // Performance: Lazy load particles on scroll
+        if ('IntersectionObserver' in window) {
+            const particlesObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        entry.target.style.opacity = '0.5';
+                    } else {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            });
+            const particles = document.getElementById('particles');
+            if (particles) particlesObserver.observe(particles);
+        }
     </script>
 </body>
 </html>
