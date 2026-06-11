@@ -1,0 +1,23 @@
+# Gradle files
+.gradle/
+build/
+.gradletasknamecache
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+*.apk
+*.ap_
+
+# Mac/Linux
+.DS_Store
+*.swp
+*.swo
+
+# Firebase
+google-services.json
